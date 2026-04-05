@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L5 Love the Change Tattoos</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#050505",
+            softInk: "#0d0d0d",
+            line: "rgba(255,255,255,0.12)",
+            chrome: "#d9d9d9",
+            chromeDark: "#7a7a7a"
+          },
+          fontFamily: {
+            display: ['"Pirata One"', '"Cinzel"', "serif"],
+            body: ['"Inter"', "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 20px 70px rgba(0,0,0,0.35)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pirata+One&family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Custom JS -->
+  <script src="script.js" defer></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: white;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .footer-bg {
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0.90)),
+        url("assets/footer-bg.jpg") center/cover no-repeat;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.14);
+      color: white;
+      border-radius: 12px;
+      padding: 0.82rem 0.95rem;
+      outline: none;
+      transition: 0.25s ease;
+      font-size: 0.97rem;
+      line-height: 1.35;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: rgba(255,255,255,0.35);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.10);
+    }
+
+    .section-label {
+      letter-spacing: 0.28em;
+    }
+
+    .footer-link,
+    .nav-icon-link {
+      transition: 0.25s ease;
+    }
+
+    .footer-link:hover,
+    .nav-icon-link:hover {
+      color: white;
+      opacity: 1;
+    }
+
+    .cta-btn {
+      background: white;
+      color: black;
+      border-radius: 999px;
+      padding: 0.88rem 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      transition: 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .ghost-btn {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      border-radius: 999px;
+      padding: 0.88rem 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      transition: 0.25s ease;
+    }
+
+    .ghost-btn:hover {
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 1023px) {
+      .hero-center-mobile {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      .hero-divider-mobile {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons-mobile {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<script>
+  const tattooForm = document.getElementById("tattooForm");
+
+  if (tattooForm) {
+    tattooForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(tattooForm);
+
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        budget: formData.get("budget"),
+        timeline: formData.get("timeline"),
+        placement: formData.get("placement"),
+        instagram: formData.get("instagram"),
+        idea: formData.get("idea")
+      };
+
+      try {
+        const response = await fetch("/.netlify/functions/send-sms", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("Tattoo request sent!");
+          tattooForm.reset();
+        } else {
+          alert("Error: " + (result.error || "Something went wrong"));
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Failed to send.");
+      }
+    });
+  }
+</script>
+<body class="bg-[#050505] text-white font-body overflow-x-hidden">
+
+  <!-- HERO / FRONT PAGE -->
+  <section id="home" class="relative min-h-screen overflow-hidden bg-black">
+
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="assets/Hero.svg"
+        alt="Tattoo hero background"
+        class="w-full h-full object-cover object-center opacity-85 grayscale contrast-110 brightness-[0.78]"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/10"></div>
+    </div>
+
+    <!-- Top chrome glow -->
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/80 to-transparent z-20"></div>
+
+    <!-- HEADER -->
+    <header class="relative z-30 w-full">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 py-6 flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#home" class="shrink-0" data-aos="fade-down" data-aos-duration="1000">
+          <img
+            src="assets/logo.svg"
+            alt="L5 Love the Change Tattoos Logo"
+            class="h-16 md:h-20 w-auto object-contain"
+          />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2">
+          <div
+            class="flex items-center gap-8"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <a href="#home" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">Home</a>
+            <a href="#about" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">About</a>
+            <a href="#portfolio" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">Portfolio</a>
+            <a href="#contact" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">Contact</a>
+            <a
+              href="https://instagram.com/l5_ink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-icon-link text-white/80 hover:text-white text-lg"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Right side -->
+        <div class="hidden md:flex items-center gap-4" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+          <a
+            href="tel:9036036868"
+            class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/15 bg-black/25 backdrop-blur-sm text-white/90 hover:text-white hover:border-white/30 transition"
+          >
+            <i class="fa-solid fa-phone text-sm"></i>
+            <span class="text-sm tracking-[0.18em] uppercase">(903) 603-6868</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="menuBtn"
+          class="md:hidden text-white text-2xl"
+          aria-label="Open Menu"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 bg-black/92 backdrop-blur-xl z-50 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300"
+    >
+      <button
+        id="closeMenu"
+        class="absolute top-6 right-6 text-white text-3xl"
+        aria-label="Close Menu"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <a href="#home" class="mobile-link text-2xl uppercase tracking-[0.35em] text-white/90">Home</a>
+      <a href="#about" class="mobile-link text-2xl uppercase tracking-[0.35em] text-white/90">About</a>
+      <a href="#portfolio" class="mobile-link text-2xl uppercase tracking-[0.35em] text-white/90">Portfolio</a>
+      <a href="#contact" class="mobile-link text-2xl uppercase tracking-[0.35em] text-white/90">Contact</a>
+
+      <a
+        href="https://instagram.com/l5_ink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 text-white text-xl"
+      >
+        <i class="fa-brands fa-instagram"></i>
+        <span class="uppercase tracking-[0.18em] text-sm">@l5_ink</span>
+      </a>
+
+      <a
+        href="tel:9036036868"
+        class="mt-2 inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/15 bg-white/5 text-white"
+      >
+        <i class="fa-solid fa-phone"></i>
+        <span class="uppercase tracking-[0.18em] text-sm">(903) 603-6868</span>
+      </a>
+    </div>
+
+    <!-- HERO CONTENT -->
+    <div class="relative z-20 min-h-screen flex items-center">
+      <div class="max-w-7xl mx-auto w-full px-6 md:px-10 pt-28 md:pt-32 pb-10 md:pb-12">
+        <div class="max-w-4xl hero-center-mobile">
+
+          <h1
+            class="font-display uppercase leading-[0.9] text-[4.4rem] sm:text-[6rem] md:text-[7.2rem] lg:text-[7.5rem] tracking-[0.08em]"
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="1200"
+          >
+            <span class="block bg-gradient-to-b from-white via-[#d9d9d9] to-[#7a7a7a] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]">
+              Love The
+            </span>
+            <span class="block text-white mt-1">
+              Change
+            </span>
+          </h1>
+
+          <div
+            class="mt-6 w-32 h-px bg-gradient-to-r from-white/90 via-white/30 to-transparent hero-divider-mobile"
+            data-aos="fade-up"
+            data-aos-delay="180"
+            data-aos-duration="1200"
+          ></div>
+
+          <p
+            class="mt-7 max-w-2xl text-white/85 text-base sm:text-lg md:text-xl leading-relaxed lg:max-w-2xl mx-auto lg:mx-0"
+            data-aos="fade-up"
+            data-aos-delay="260"
+            data-aos-duration="1200"
+          >
+            Custom tattoos, bold artwork, and meaningful pieces done out of <span class="text-white">Supernatural Tattoo Studio TX</span>.
+          </p>
+
+          <div
+            class="mt-10 flex flex-col sm:flex-row gap-4 hero-buttons-mobile"
+            data-aos="fade-up"
+            data-aos-delay="380"
+            data-aos-duration="1200"
+          >
+            <a
+              href="#contact"
+              class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-black font-semibold uppercase tracking-[0.18em] bg-gradient-to-b from-white via-[#d9d9d9] to-[#7a7a7a] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_10px_30px_rgba(255,255,255,0.08)] hover:scale-[1.02] transition"
+            >
+              Book Tattoo
+              <i class="fa-solid fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+            </a>
+
+            <a
+              href="#portfolio"
+              class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-white/15 bg-black/25 backdrop-blur-sm text-white/90 hover:text-white hover:border-white/30 transition uppercase tracking-[0.18em]"
+            >
+              View Work
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Fade -->
+    <div class="absolute bottom-0 left-0 w-full h-14 md:h-20 bg-gradient-to-t from-[#050505] to-transparent z-10"></div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="relative pt-16 md:pt-20 pb-24 md:pb-32 overflow-hidden">
+
+    <!-- BACKGROUND IMAGE -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="assets/d.png"
+        alt="Tattoo background"
+        class="w-full h-full object-cover object-center scale-105"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+
+      <!-- HEADER -->
+      <div class="max-w-3xl mx-auto text-center mb-14 md:mb-20" data-aos="fade-up">
+        <p class="text-xs uppercase tracking-[0.4em] text-white/45 mb-4">About</p>
+        <h2 class="font-display uppercase text-[2.8rem] sm:text-[4rem] md:text-[5rem] leading-[0.95]">
+          <span class="bg-gradient-to-b from-white via-[#d9d9d9] to-[#7a7a7a] bg-clip-text text-transparent">
+            Art That
+          </span>
+          <span class="block text-white mt-1">Feels Personal</span>
+        </h2>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="grid lg:grid-cols-[0.98fr_1.02fr] gap-10 md:gap-12 xl:gap-20 items-center">
+
+        <!-- IMAGE LEFT -->
+        <div
+          class="relative rounded-[2rem] overflow-hidden border border-white/10 bg-black/20 backdrop-blur-[6px] shadow-[0_20px_80px_rgba(0,0,0,0.35)] min-h-[420px] sm:min-h-[520px] lg:min-h-[620px]"
+          data-aos="fade-up"
+          data-aos-delay="140"
+        >
+          <img
+            src="assets/image42.jpeg"
+            alt="Tattoo artist work example"
+            class="w-full h-full object-cover absolute inset-0"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- TEXT RIGHT -->
+        <div>
+          <p
+            class="text-white/90 text-base sm:text-lg md:text-[1.1rem] leading-relaxed max-w-2xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Eager to learn and always happy to help, I left the 9–5 life to follow my passion for art and business — and to set an example for my two boys. I want them to grow up treating people with kindness, staying humble, and going after what truly matters to them.
+          </p>
+
+          <p
+            class="mt-6 text-white/75 text-base sm:text-lg md:text-[1.1rem] leading-relaxed max-w-2xl"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            I hold very high standards when it comes to my work because every tattoo I create is permanent and personal. I’m grateful for every client who trusts me with their ideas. I’m not a judgmental artist, but I’ll always give my honest opinion when it comes to the structure, flow, and overall look of a tattoo so you leave with something you’ll love for life.
+          </p>
+
+          <p
+            class="mt-6 text-white/75 text-base sm:text-lg md:text-[1.1rem] leading-relaxed max-w-2xl"
+            data-aos="fade-up"
+            data-aos-delay="220"
+          >
+            L5 stands for <span class="text-white/90 font-semibold">Love the Change</span>. Based out of <span class="text-white">Supernatural Tattoo Studio TX</span>, my goal is to create tattoos that bring confidence, peace, and a real sense of meaning every time you look at them.
+          </p>
+
+          <p
+            class="mt-8 italic text-white/90 text-lg sm:text-xl md:text-[1.45rem] border-l border-white/20 pl-5"
+            data-aos="fade-up"
+            data-aos-delay="280"
+          >
+            “Empty your mind. Be formless, like water. Flow or crash.”
+          </p>
+
+          <div class="mt-8" data-aos="fade-up" data-aos-delay="320">
+            <a
+              href="https://instagram.com/l5_ink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 text-white/85 hover:text-white transition"
+            >
+              <i class="fa-brands fa-instagram text-lg"></i>
+              <span class="uppercase tracking-[0.2em] text-sm">@l5_ink</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+<!-- PORTFOLIO SECTION -->
+<section id="portfolio" class="relative py-24 md:py-32 overflow-hidden bg-black">
+
+  <!-- BACKGROUND IMAGE -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="assets/thumb-1920-119151.jpg"
+      alt="Tattoo portfolio background"
+      class="w-full h-full object-cover object-center scale-110 blur-[1px]"
+    />
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/90"></div>
+  </div>
+
+  <!-- TOP LINE -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-10"></div>
+
+  <!-- CONTENT -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+    
+    <!-- HEADING -->
+    <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+      <p class="text-xs uppercase tracking-[0.42em] text-white/40 mb-4">Portfolio</p>
+      <h2 class="font-display text-[3.2rem] sm:text-[4.8rem] md:text-[5.8rem] leading-[0.92] text-white uppercase">
+        Check Out My
+        <span class="block bg-gradient-to-b from-white via-[#d9d9d9] to-[#7a7a7a] bg-clip-text text-transparent">
+          Portfolio
+        </span>
+      </h2>
+      <p class="mt-5 max-w-2xl mx-auto text-white/65 text-sm sm:text-base md:text-lg leading-relaxed">
+        A look at healed work, fresh pieces, custom designs, and tattoos built to feel personal and timeless.
+      </p>
+    </div>
+
+    <!-- PORTFOLIO GRID -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5 items-end">
+
+      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-8 hover:translate-y-4 transition duration-500" data-aos="fade-up" data-aos-delay="0">
+        <img src="assets/image14.jpeg" alt="Tattoo portfolio piece 1" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+      </a>
+
+      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="60">
+        <img src="assets/image1.jpeg" alt="Tattoo portfolio piece 2" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+      </a>
+
+      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-6 hover:translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="120">
+        <img src="assets/image2.jpeg" alt="Tattoo portfolio piece 3" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+      </a>
+
+      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="180">
+        <img src="assets/image3.jpeg" alt="Tattoo portfolio piece 4" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+      </a>
+
+      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-8 hover:translate-y-4 transition duration-500" data-aos="fade-up" data-aos-delay="240">
+        <img src="assets/image4.jpeg" alt="Tattoo portfolio piece 5" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+      </a>
+
+      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="300">
+        <img src="assets/image7.jpeg" alt="Tattoo portfolio piece 6" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+      </a>
+
+    </div>
+
+    <!-- BUTTON -->
+    <div class="mt-14 text-center" data-aos="fade-up" data-aos-delay="120">
+      <a
+        href="portfolio.html"
+        class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-white/90 hover:text-white hover:border-white/30 transition uppercase tracking-[0.18em]"
+      >
+        View Full Portfolio
+        <i class="fa-solid fa-arrow-right text-sm"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- BOOKING / CONTACT SECTION -->
+<section id="contact" class="bg-black py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="grid lg:grid-cols-2 gap-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070707] shadow-soft">
+
+      <div class="relative min-h-[290px] sm:min-h-[360px] md:min-h-[500px] lg:min-h-[100%]">
+        <img
+          src="assets/contact.jpeg"
+          alt="Tattoo studio session"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/25"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+      </div>
+
+      <div class="bg-black px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12">
+        <p class="text-[11px] uppercase text-white/45 section-label mb-3">Contact</p>
+
+        <h2 class="font-display text-[2.9rem] sm:text-[3.9rem] md:text-[4.5rem] leading-[0.9] text-white">
+          Book a tattoo
+        </h2>
+
+        <p class="mt-4 text-white/75 text-sm sm:text-base leading-relaxed max-w-xl">
+          Fill this out with your idea and I’ll get back to you with availability.
+        </p>
+
+        <form id="tattooForm" class="mt-7 space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Name</label>
+            <input type="text" name="name" required class="form-input" />
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Email</label>
+            <input type="email" name="email" required class="form-input" />
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Phone Number</label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="(555) 555-5555"
+                class="form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Budget</label>
+              <input
+                type="text"
+                name="budget"
+                placeholder="$200, $400, etc"
+                class="form-input"
+              />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Timeline</label>
+              <input
+                type="text"
+                name="timeline"
+                placeholder="This week, next month"
+                class="form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Placement</label>
+              <input
+                type="text"
+                name="placement"
+                placeholder="Size and body area"
+                class="form-input"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Instagram</label>
+            <input
+              type="text"
+              name="instagram"
+              placeholder="@username"
+              class="form-input"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Tattoo Idea</label>
+            <textarea
+              name="idea"
+              rows="4"
+              placeholder="Flash you like, custom idea, references, style, black and grey or color, etc"
+              class="form-textarea"
+            ></textarea>
+          </div>
+
+          <div class="pt-1 flex flex-col sm:flex-row gap-3">
+            <button type="submit" class="cta-btn">
+              Submit Request
+              <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+
+            <a href="sms:9039049167" class="ghost-btn">
+              Text Instead
+              <i class="fa-solid fa-comment-sms text-sm"></i>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="footer-bg relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10 text-center">
+      <div class="flex flex-col items-center text-center">
+        <img
+          src="assets/logo.svg"
+          alt="Love the Change logo"
+          class="w-[170px] sm:w-[210px] md:w-[240px] h-auto object-contain"
+        />
+
+        <h3 class="mt-7 font-display text-[2.9rem] sm:text-[3.9rem] md:text-[4.8rem] leading-none">
+          Love the Change
+        </h3>
+
+        <p class="mt-4 text-white/78 text-base sm:text-lg max-w-2xl leading-relaxed">
+          Tattooing out of <span class="text-white">Supernatural Tattoo Studio TX</span>.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10 mt-14 md:mt-16 justify-items-center text-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Studio</p>
+          <p class="text-white text-[1.06rem] leading-relaxed">
+            Supernatural Tattoo Studio TX
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Contact</p>
+          <div class="space-y-3 text-[1.06rem]">
+            <a href="tel:9036036868" class="footer-link text-white/92 underline underline-offset-4 block">
+              By appointment only
+            </a>
+            <a href="mailto:upliftchangel5@gmail.com" class="footer-link text-white/70 block">
+              upliftchangel5@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Instagram</p>
+          <a
+            href="https://instagram.com/l5_ink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link inline-flex items-center gap-4 text-white/92 text-[1.06rem]"
+          >
+            <i class="fa-brands fa-instagram text-[1.35rem]"></i>
+            <span>@l5_ink</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-white/10 pt-6 text-center">
+        <a
+          href="https://echelonwebsites.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/40 hover:text-white/70 uppercase tracking-[0.22em] text-xs sm:text-sm transition"
+        >
+          Custom coded by Echelon
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 80
+      });
+
+      const menuBtn = document.getElementById("menuBtn");
+      const closeMenu = document.getElementById("closeMenu");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      if (menuBtn && closeMenu && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+        });
+
+        closeMenu.addEventListener("click", () => {
+          mobileMenu.classList.add("opacity-0", "pointer-events-none");
+        });
+
+        mobileLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("opacity-0", "pointer-events-none");
+          });
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
