@@ -1,0 +1,6 @@
+
+  .footer-bg {
+    background:
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.13), rgba(0,0,0,0.90)),
+      url("assets/image.png") center center / cover no-repeat;
+  }
