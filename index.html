@@ -217,15 +217,33 @@
   <!-- HERO / FRONT PAGE -->
   <section id="home" class="relative min-h-screen overflow-hidden bg-black">
 
-    <!-- Background Image -->
+    <!-- BACKGROUND (VIDEO MOBILE / IMAGE DESKTOP) -->
     <div class="absolute inset-0 z-0">
+
+      <!-- DESKTOP / LAPTOP IMAGE -->
       <img
         src="assets/Hero.svg"
         alt="Tattoo hero background"
-        class="w-full h-full object-cover object-center opacity-85 grayscale contrast-110 brightness-[0.78]"
+        class="hidden lg:block w-full h-full object-cover object-center opacity-85 grayscale contrast-110 brightness-[0.78]"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/10"></div>
+
+      <!-- MOBILE + IPAD VIDEO -->
+      <video
+        class="block lg:hidden w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="assets/z.mp4" type="video/mp4" />
+      </video>
+
+      <!-- MOBILE + IPAD DARK OVERLAY -->
+      <div class="block lg:hidden absolute inset-0 bg-black/50"></div>
+
+      <!-- DESKTOP IMAGE OVERLAYS -->
+      <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10"></div>
+      <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/10"></div>
     </div>
 
     <!-- Top chrome glow -->
@@ -256,27 +274,37 @@
             <a href="#about" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">About</a>
             <a href="#portfolio" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">Portfolio</a>
             <a href="#contact" class="text-sm uppercase tracking-[0.25em] text-white/85 hover:text-white transition relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-0 hover:after:w-full after:h-px after:bg-white/80 after:transition-all">Contact</a>
-            <a
-              href="https://instagram.com/l5_ink"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nav-icon-link text-white/80 hover:text-white text-lg"
-              aria-label="Instagram"
-            >
-              <i class="fa-brands fa-instagram"></i>
-            </a>
           </div>
         </nav>
 
         <!-- Right side -->
-        <div class="hidden md:flex items-center gap-4" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
-          <a
-            href="tel:9036036868"
-            class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/15 bg-black/25 backdrop-blur-sm text-white/90 hover:text-white hover:border-white/30 transition"
-          >
-            <i class="fa-solid fa-phone text-sm"></i>
-            <span class="text-sm tracking-[0.18em] uppercase">(903) 603-6868</span>
+        <div class="hidden md:flex items-center gap-5 text-xl">
+
+          <!-- PHONE -->
+          <a href="tel:9039049167" class="nav-icon-link text-white/80 hover:text-white transition" aria-label="Call">
+            <i class="fa-solid fa-phone"></i>
           </a>
+
+          <!-- INSTAGRAM -->
+          <a href="https://instagram.com/l5_ink" target="_blank" rel="noopener noreferrer" class="nav-icon-link text-white/80 hover:text-white transition" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <!-- SNAPCHAT -->
+          <a href="https://www.snapchat.com/add/cam_boren" target="_blank" rel="noopener noreferrer" class="nav-icon-link text-white/80 hover:text-white transition" aria-label="Snapchat">
+            <i class="fa-brands fa-snapchat"></i>
+          </a>
+
+          <!-- TIKTOK -->
+          <a href="https://www.tiktok.com/@l5_ink?_r=1&_t=ZP-95J2ZUlE7dH" target="_blank" rel="noopener noreferrer" class="nav-icon-link text-white/80 hover:text-white transition" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+
+          <!-- FACEBOOK -->
+          <a href="https://www.facebook.com/share/19cRav5sfd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="nav-icon-link text-white/80 hover:text-white transition" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
         </div>
 
         <!-- Mobile Menu Button -->
@@ -310,15 +338,47 @@
       <a href="#portfolio" class="mobile-link text-2xl uppercase tracking-[0.35em] text-white/90">Portfolio</a>
       <a href="#contact" class="mobile-link text-2xl uppercase tracking-[0.35em] text-white/90">Contact</a>
 
-      <a
-        href="https://instagram.com/l5_ink"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 text-white text-xl"
-      >
-        <i class="fa-brands fa-instagram"></i>
-        <span class="uppercase tracking-[0.18em] text-sm">@l5_ink</span>
-      </a>
+      <div class="flex items-center gap-6 pt-2 text-2xl">
+        <a
+          href="https://instagram.com/l5_ink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/85 hover:text-white transition"
+          aria-label="Instagram"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a
+          href="https://www.snapchat.com/add/cam_boren"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/85 hover:text-white transition"
+          aria-label="Snapchat"
+        >
+          <i class="fa-brands fa-snapchat"></i>
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@l5_ink?_r=1&_t=ZP-95J2ZUlE7dH"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/85 hover:text-white transition"
+          aria-label="TikTok"
+        >
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+
+        <a
+          href="https://www.facebook.com/share/19cRav5sfd/?mibextid=wwXIfr"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/85 hover:text-white transition"
+          aria-label="Facebook"
+        >
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+      </div>
 
       <a
         href="tel:9036036868"
@@ -361,7 +421,7 @@
             data-aos-delay="260"
             data-aos-duration="1200"
           >
-            Custom tattoos, bold artwork, and meaningful pieces done out of <span class="text-white">Supernatural Tattoo Studio TX</span>.
+            Custom tattoos, bold artwork, and meaningful pieces done out of <span class="text-white">Supernatural Tattoo Studio </span>.
           </p>
 
           <div
@@ -471,7 +531,7 @@
             “Empty your mind. Be formless, like water. Flow or crash.”
           </p>
 
-          <div class="mt-8" data-aos="fade-up" data-aos-delay="320">
+          <div class="mt-8 flex flex-wrap items-center gap-5" data-aos="fade-up" data-aos-delay="320">
             <a
               href="https://instagram.com/l5_ink"
               target="_blank"
@@ -479,7 +539,37 @@
               class="inline-flex items-center gap-3 text-white/85 hover:text-white transition"
             >
               <i class="fa-brands fa-instagram text-lg"></i>
-              <span class="uppercase tracking-[0.2em] text-sm">@l5_ink</span>
+              <span class="uppercase tracking-[0.2em] text-sm"></span>
+            </a>
+
+            <a
+              href="https://www.snapchat.com/add/cam_boren"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/70 hover:text-white transition text-xl"
+              aria-label="Snapchat"
+            >
+              <i class="fa-brands fa-snapchat"></i>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@l5_ink?_r=1&_t=ZP-95J2ZUlE7dH"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/70 hover:text-white transition text-xl"
+              aria-label="TikTok"
+            >
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/19cRav5sfd/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white/70 hover:text-white transition text-xl"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
             </a>
           </div>
         </div>
@@ -489,289 +579,357 @@
   </section>
 
   <!-- PORTFOLIO SECTION -->
-<!-- PORTFOLIO SECTION -->
-<section id="portfolio" class="relative py-24 md:py-32 overflow-hidden bg-black">
+  <section id="portfolio" class="relative py-24 md:py-32 overflow-hidden bg-black">
 
-  <!-- BACKGROUND IMAGE -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="assets/gen.jpg"
-      alt="Tattoo portfolio background"
-      class="w-full h-full object-cover object-center scale-110 blur-[1px]"
-    />
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/90"></div>
-  </div>
-
-  <!-- TOP LINE -->
-  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-10"></div>
-
-  <!-- CONTENT -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-    
-    <!-- HEADING -->
-    <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
-      <p class="text-xs uppercase tracking-[0.42em] text-white/40 mb-4">Portfolio</p>
-      <h2 class="font-display text-[3.2rem] sm:text-[4.8rem] md:text-[5.8rem] leading-[0.92] text-white uppercase">
-        Check Out My
-        <span class="block bg-gradient-to-b from-white via-[#d9d9d9] to-[#7a7a7a] bg-clip-text text-transparent">
-          Portfolio
-        </span>
-      </h2>
-      <p class="mt-5 max-w-2xl mx-auto text-white/65 text-sm sm:text-base md:text-lg leading-relaxed">
-        A look at healed work, fresh pieces, custom designs, and tattoos built to feel personal and timeless.
-      </p>
-    </div>
-
-    <!-- PORTFOLIO GRID -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5 items-end">
-
-      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-8 hover:translate-y-4 transition duration-500" data-aos="fade-up" data-aos-delay="0">
-        <img src="assets/image14.jpeg" alt="Tattoo portfolio piece 1" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
-        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
-      </a>
-
-      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="60">
-        <img src="assets/image1.jpeg" alt="Tattoo portfolio piece 2" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
-        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
-      </a>
-
-      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-6 hover:translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="120">
-        <img src="assets/image2.jpeg" alt="Tattoo portfolio piece 3" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
-        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
-      </a>
-
-      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="180">
-        <img src="assets/image3.jpeg" alt="Tattoo portfolio piece 4" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
-        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
-      </a>
-
-      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-8 hover:translate-y-4 transition duration-500" data-aos="fade-up" data-aos-delay="240">
-        <img src="assets/image4.jpeg" alt="Tattoo portfolio piece 5" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
-        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
-      </a>
-
-      <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="300">
-        <img src="assets/image7.jpeg" alt="Tattoo portfolio piece 6" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
-        <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
-      </a>
-
-    </div>
-
-    <!-- BUTTON -->
-    <div class="mt-14 text-center" data-aos="fade-up" data-aos-delay="120">
-      <a
-        href="portfolio.html"
-        class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-white/90 hover:text-white hover:border-white/30 transition uppercase tracking-[0.18em]"
-      >
-        View Full Portfolio
-        <i class="fa-solid fa-arrow-right text-sm"></i>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- BOOKING / CONTACT SECTION -->
-<section id="contact" class="bg-black py-14 md:py-20">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <div class="grid lg:grid-cols-2 gap-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070707] shadow-soft">
-
-      <div class="relative min-h-[290px] sm:min-h-[360px] md:min-h-[500px] lg:min-h-[100%]">
-        <img
-          src="assets/contact.jpeg"
-          alt="Tattoo studio session"
-          class="absolute inset-0 w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/25"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-      </div>
-
-      <div class="bg-black px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12">
-        <p class="text-[11px] uppercase text-white/45 section-label mb-3">Contact</p>
-
-        <h2 class="font-display text-[2.9rem] sm:text-[3.9rem] md:text-[4.5rem] leading-[0.9] text-white">
-          Book a tattoo
-        </h2>
-
-        <p class="mt-4 text-white/75 text-sm sm:text-base leading-relaxed max-w-xl">
-          Fill this out with your idea and I’ll get back to you with availability.
-        </p>
-
-        <form id="tattooForm" class="mt-7 space-y-4">
-          <div>
-            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Name</label>
-            <input type="text" name="name" required class="form-input" />
-          </div>
-
-          <div>
-            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Email</label>
-            <input type="email" name="email" required class="form-input" />
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Phone Number</label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="(555) 555-5555"
-                class="form-input"
-              />
-            </div>
-
-            <div>
-              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Budget</label>
-              <input
-                type="text"
-                name="budget"
-                placeholder="$200, $400, etc"
-                class="form-input"
-              />
-            </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Timeline</label>
-              <input
-                type="text"
-                name="timeline"
-                placeholder="This week, next month"
-                class="form-input"
-              />
-            </div>
-
-            <div>
-              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Placement</label>
-              <input
-                type="text"
-                name="placement"
-                placeholder="Size and body area"
-                class="form-input"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Instagram</label>
-            <input
-              type="text"
-              name="instagram"
-              placeholder="@username"
-              class="form-input"
-            />
-          </div>
-
-          <div>
-            <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Tattoo Idea</label>
-            <textarea
-              name="idea"
-              rows="4"
-              placeholder="Flash you like, custom idea, references, style, black and grey or color, etc"
-              class="form-textarea"
-            ></textarea>
-          </div>
-
-          <div class="pt-1 flex flex-col sm:flex-row gap-3">
-            <button type="submit" class="cta-btn">
-              Submit Request
-              <i class="fa-solid fa-arrow-right text-sm"></i>
-            </button>
-
-            <a href="sms:9039049167" class="ghost-btn">
-              Text Instead
-              <i class="fa-solid fa-comment-sms text-sm"></i>
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="relative overflow-hidden bg-black">
-
-  <!-- BACKGROUND IMAGE -->
-  <img
-    src="assets/image.png"
-    alt="Jesus tattoo background"
-    class="absolute inset-0 w-full h-full object-cover object-top opacity-12 scale-105"
-  />
-
-  <!-- DARK OVERLAYS -->
-  <div class="absolute inset-0 bg-black/65"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85"></div>
-
-  <!-- CONTENT -->
-  <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10 text-center">
-    <div class="flex flex-col items-center text-center">
+    <!-- BACKGROUND IMAGE -->
+    <div class="absolute inset-0 z-0">
       <img
-        src="assets/logo.svg"
-        alt="Love the Change logo"
-        class="w-[170px] sm:w-[210px] md:w-[240px] h-auto object-contain"
+        src="assets/gen.jpg"
+        alt="Tattoo portfolio background"
+        class="w-full h-full object-cover object-center scale-110 blur-[1px]"
       />
-
-      <h3 class="mt-7 font-display text-[2.9rem] sm:text-[3.9rem] md:text-[4.8rem] leading-none">
-        Love the Change
-      </h3>
-
-      <p class="mt-4 text-white/78 text-base sm:text-lg max-w-2xl leading-relaxed">
-        Tattooing out of <span class="text-white">Supernatural Tattoo Studio TX</span>.
-      </p>
+      <div class="absolute inset-0 bg-black/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/90"></div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-10 mt-14 md:mt-16 justify-items-center text-center">
-      <div>
-        <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Studio</p>
-        <p class="text-white text-[1.06rem] leading-relaxed">
-          Supernatural Tattoo Studio TX
+    <!-- TOP LINE -->
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-10"></div>
+
+    <!-- CONTENT -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+      
+      <!-- HEADING -->
+      <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+        <p class="text-xs uppercase tracking-[0.42em] text-white/40 mb-4">Portfolio</p>
+        <h2 class="font-display text-[3.2rem] sm:text-[4.8rem] md:text-[5.8rem] leading-[0.92] text-white uppercase">
+          Check Out My
+          <span class="block bg-gradient-to-b from-white via-[#d9d9d9] to-[#7a7a7a] bg-clip-text text-transparent">
+            Portfolio
+          </span>
+        </h2>
+        <p class="mt-5 max-w-2xl mx-auto text-white/65 text-sm sm:text-base md:text-lg leading-relaxed">
+          A look at healed work, fresh pieces, custom designs, and tattoos built to feel personal and timeless.
         </p>
       </div>
 
-      <div>
-        <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Contact</p>
-        <div class="space-y-3 text-[1.06rem]">
-          <a href="tel:9036036868" class="footer-link text-white/92 underline underline-offset-4 block">
-            By appointment only
-          </a>
-          <a href="mailto:upliftchangel5@gmail.com" class="footer-link text-white/70 block">
-            upliftchangel5@gmail.com
-          </a>
-        </div>
+      <!-- PORTFOLIO GRID -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5 items-end">
+
+        <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-8 hover:translate-y-4 transition duration-500" data-aos="fade-up" data-aos-delay="0">
+          <img src="assets/image9.jpeg" alt="Tattoo portfolio piece 1" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+          <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+        </a>
+
+        <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="60">
+          <img src="assets/image15.jpeg" alt="Tattoo portfolio piece 2" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+          <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+        </a>
+
+        <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-6 hover:translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="120">
+          <img src="assets/image11.jpeg" alt="Tattoo portfolio piece 3" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+          <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+        </a>
+
+        <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="180">
+          <img src="assets/image3.jpeg" alt="Tattoo portfolio piece 4" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+          <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+        </a>
+
+        <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] translate-y-8 hover:translate-y-4 transition duration-500" data-aos="fade-up" data-aos-delay="240">
+          <img src="assets/image7.jpeg" alt="Tattoo portfolio piece 5" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+          <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+        </a>
+
+        <a href="#" class="group relative block overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#080808]/80 backdrop-blur-sm shadow-[0_18px_50px_rgba(0,0,0,0.45)] aspect-[0.55/1] hover:-translate-y-2 transition duration-500" data-aos="fade-up" data-aos-delay="300">
+          <img src="assets/image3.jpeg" alt="Tattoo portfolio piece 6" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0"></div>
+          <div class="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/15 rounded-[1.6rem] transition"></div>
+        </a>
+
       </div>
 
-      <div>
-        <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Instagram</p>
+      <!-- BUTTON -->
+      <div class="mt-14 text-center" data-aos="fade-up" data-aos-delay="120">
         <a
-          href="https://instagram.com/l5_ink"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="footer-link inline-flex items-center gap-4 text-white/92 text-[1.06rem]"
+          href="portfolio.html"
+          class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-white/90 hover:text-white hover:border-white/30 transition uppercase tracking-[0.18em]"
         >
-          <i class="fa-brands fa-instagram text-[1.35rem]"></i>
-          <span>@l5_ink</span>
+          View Full Portfolio
+          <i class="fa-solid fa-arrow-right text-sm"></i>
         </a>
       </div>
     </div>
+  </section>
 
-    <div class="mt-12 border-t border-white/10 pt-6 text-center">
-      <a
-        href="https://echelonwebsites.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-white/40 hover:text-white/70 uppercase tracking-[0.22em] text-xs sm:text-sm transition"
-      >
-        Custom coded by Echelon
-      </a>
+  <!-- BOOKING / CONTACT SECTION -->
+  <section id="contact" class="bg-black py-14 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="grid lg:grid-cols-2 gap-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070707] shadow-soft">
+
+        <div class="relative min-h-[290px] sm:min-h-[360px] md:min-h-[500px] lg:min-h-[100%]">
+          <img
+            src="assets/contact.jpeg"
+            alt="Tattoo studio session"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/25"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="bg-black px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12">
+          <p class="text-[11px] uppercase text-white/45 section-label mb-3">Contact</p>
+
+          <h2 class="font-display text-[2.9rem] sm:text-[3.9rem] md:text-[4.5rem] leading-[0.9] text-white">
+            Book a tattoo
+          </h2>
+
+          <p class="mt-4 text-white/75 text-sm sm:text-base leading-relaxed max-w-xl">
+            Fill this out with your idea and I’ll get back to you with availability.
+          </p>
+
+          <form id="tattooForm" class="mt-7 space-y-4">
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Name</label>
+              <input type="text" name="name" required class="form-input" />
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Email</label>
+              <input type="email" name="email" required class="form-input" />
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="(555) 555-5555"
+                  class="form-input"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Budget</label>
+                <input
+                  type="text"
+                  name="budget"
+                  placeholder="$200, $400, etc"
+                  class="form-input"
+                />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Timeline</label>
+                <input
+                  type="text"
+                  name="timeline"
+                  placeholder="This week, next month"
+                  class="form-input"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Placement</label>
+                <input
+                  type="text"
+                  name="placement"
+                  placeholder="Size and body area"
+                  class="form-input"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Instagram</label>
+              <input
+                type="text"
+                name="instagram"
+                placeholder="@username"
+                class="form-input"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-[0.22em] text-white/70 mb-2">Tattoo Idea</label>
+              <textarea
+                name="idea"
+                rows="4"
+                placeholder="Flash you like, custom idea, references, style, black and grey or color, etc"
+                class="form-textarea"
+              ></textarea>
+            </div>
+
+            <div class="pt-1 flex flex-col sm:flex-row gap-3">
+              <button type="submit" class="cta-btn">
+                Submit Request
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+              </button>
+
+              <a href="sms:9039049167" class="ghost-btn">
+                Text Instead
+                <i class="fa-solid fa-comment-sms text-sm"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative overflow-hidden bg-black">
+
+    <!-- BACKGROUND IMAGE -->
+    <img
+      src="assets/image.png"
+      alt="Jesus tattoo background"
+      class="absolute inset-0 w-full h-full object-cover object-top opacity-12 scale-105"
+    />
+
+    <!-- DARK OVERLAYS -->
+    <div class="absolute inset-0 bg-black/65"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85"></div>
+
+    <!-- CONTENT -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-10 text-center">
+      <div class="flex flex-col items-center text-center">
+        <img
+          src="assets/logo.svg"
+          alt="Love the Change logo"
+          class="w-[170px] sm:w-[210px] md:w-[240px] h-auto object-contain"
+        />
+
+        <h3 class="mt-7 font-display text-[2.9rem] sm:text-[3.9rem] md:text-[4.8rem] leading-none">
+          Love the Change
+        </h3>
+
+        <p class="mt-4 text-white/78 text-base sm:text-lg max-w-2xl leading-relaxed">
+          Shop <span class="text-white">Supernatural Tattoo Studio </span>.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10 mt-14 md:mt-16 justify-items-center text-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Studio Location</p>
+          <p class="text-white text-[1.06rem] leading-relaxed">
+            11511 Walnut ln Forney, Texas
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Contact</p>
+          <div class="space-y-3 text-[1.06rem]">
+            <a href="tel:9036036868" class="footer-link text-white/92 underline underline-offset-4 block">
+              By appointment only
+            </a>
+            <a href="mailto:upliftchangel5@gmail.com" class="footer-link text-white/70 block">
+              upliftchangel5@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-white/55 mb-5">Follow</p>
+          <div class="flex items-center justify-center gap-5 text-[1.35rem]">
+            <a
+              href="https://instagram.com/l5_ink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link text-white/92"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.snapchat.com/add/cam_boren"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link text-white/92"
+              aria-label="Snapchat"
+            >
+              <i class="fa-brands fa-snapchat"></i>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@l5_ink?_r=1&_t=ZP-95J2ZUlE7dH"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link text-white/92"
+              aria-label="TikTok"
+            >
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/19cRav5sfd/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link text-white/92"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </div>
+
+          <div class="mt-4 space-y-2 text-sm text-white/70">
+            <a
+              href="https://instagram.com/l5_ink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link block"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.snapchat.com/add/cam_boren"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link block"
+            >
+              Snapchat
+            </a>
+            <a
+              href="https://www.tiktok.com/@l5_ink?_r=1&_t=ZP-95J2ZUlE7dH"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link block"
+            >
+              TikTok
+            </a>
+            <a
+              href="https://www.facebook.com/share/19cRav5sfd/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link block"
+            >
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-white/10 pt-6 text-center">
+        <a
+          href="https://echelonwebsites.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white/40 hover:text-white/70 uppercase tracking-[0.22em] text-xs sm:text-sm transition"
+        >
+          Custom coded by Echelon
+        </a>
+      </div>
+    </div>
+  </footer>
+
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
